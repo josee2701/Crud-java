@@ -23,7 +23,7 @@ public class EstudianteServiceImpl implements EstudianteService {
 
     @Override
     public Estudiante findById(Integer id) {
-        return estudianteRepository.findById(id).orElse(null);
+        return estudianteRepository.findById(id).get();
     }
 
     @Override
@@ -33,12 +33,12 @@ public class EstudianteServiceImpl implements EstudianteService {
 
     @Override
     public Estudiante update(Estudiante estudiante) {
-        return null;
+        return estudianteRepository.save(estudiante);
     }
 
     @Override
     public void deleteById(Integer id) {
-
+        estudianteRepository.deleteById(id);
     }
 
 }
