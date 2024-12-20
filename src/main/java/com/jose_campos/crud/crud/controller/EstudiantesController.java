@@ -27,13 +27,13 @@ public class EstudiantesController {
     //CRUD
 
     // Listar todos los estudiantes
-    @GetMapping
+    @GetMapping("/estudiantes/")
     public List<Estudiante> findAll() {
         return estudiantesService.findAll();
     }
     
     // Detalle de un estudiante
-    @GetMapping("/{id}/")
+    @GetMapping("/estudiantes/{id}/")
     public Estudiante findById(@PathVariable("id") Integer id) {
         return estudiantesService.findById(id);
     }
@@ -54,15 +54,9 @@ public class EstudiantesController {
     }
 
     // Eliminar un estudiante
-    // Eliminar un estudiante
     @DeleteMapping("/estudiantes/{id}/")
     public void deleteById(@PathVariable("id") Integer id) {
         estudiantesService.deleteById(id);
     }
-
-    
-    
-    
-
 
 }
