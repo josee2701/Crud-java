@@ -2,6 +2,7 @@ package com.jose_campos.crud.crud.controller;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,8 @@ import com.jose_campos.crud.crud.service.ProfesoresService;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
+
 public class ProfesoresController {
 
     private final ProfesoresService profesoresService;
@@ -22,25 +25,25 @@ public class ProfesoresController {
         this.profesoresService = profesoresService;
     }
     //CRUD
-    @GetMapping("/profesores/")
+    @GetMapping("/profesor/")
     public List<Profesores> findAll() {
         return profesoresService.findAll();
     }
-    @GetMapping("/profesores/{id}")
+    @GetMapping("/profesor/{id}")
     public Profesores findById(@PathVariable("id") Integer id) {
         return profesoresService.findById(id);
     }
-    @PostMapping("/profesores/")
+    @PostMapping("/profesor/")
     public Profesores save(@RequestBody Profesores profesor) {
         return profesoresService.save(profesor);
     }
-    @PutMapping("/profesores/{id}")
+    @PutMapping("/profesor/{id}")
     public Profesores update(@PathVariable("id") Integer id, @RequestBody Profesores profesor) {
         Profesores profesorActual = profesoresService.findById(id);
         profesorActual.setNombre(profesor.getNombre());
         return profesoresService.update(profesorActual);
     }
-    @DeleteMapping("/profesores/{id}")
+    @DeleteMapping("/profesor/{id}")
     public void deleteById(@PathVariable("id") Integer id) {
         profesoresService.deleteById(id);
     }
